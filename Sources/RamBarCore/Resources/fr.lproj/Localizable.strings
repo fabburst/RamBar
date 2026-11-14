@@ -36,6 +36,10 @@
 "settings.calc.activity.sub" = "Façon Moniteur d'activité (recommandé)";
 "settings.calc.strict.sub" = "Uniquement la RAM non allouée";
 "settings.refreshInterval" = "Rafraîchissement";
+"settings.theme" = "Apparence";
+"settings.theme.system" = "Auto";
+"settings.theme.light" = "Clair";
+"settings.theme.dark" = "Sombre";
 "settings.launchAtLogin" = "Lancer au démarrage";
 "settings.dynamicColor" = "Couleur selon charge RAM";
 "settings.criticalColor" = "Couleur seuil critique";

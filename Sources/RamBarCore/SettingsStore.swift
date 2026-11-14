@@ -50,6 +50,43 @@ public enum DisplayMetric: String, CaseIterable, Identifiable, Sendable {
     }
 }
 
+public enum AppTheme: String, CaseIterable, Identifiable, Sendable {
+    case system
+    case light
+    case dark
+
+    public var id: String { rawValue }
+
+    public var title: String {
+        switch self {
+        case .system: L10n.string("settings.theme.system")
+        case .light: L10n.string("settings.theme.light")
+        case .dark: L10n.string("settings.theme.dark")
+        }
+    }
+
+    public var colorScheme: ColorScheme? {
+        switch self {
+        case .system: nil
+        case .light: .light
+        case .dark: .dark
+        }
+    }
+
+    @MainActor
+    public func applyToApplication() {
+        guard let app = NSApp else { return }
+        switch self {
+        case .system:
+            app.appearance = nil
+        case .light:
+            app.appearance = NSAppearance(named: .aqua)
+        case .dark:
+            app.appearance = NSAppearance(named: .darkAqua)
+        }
+    }
+}
+
 public enum AvailabilityMode: String, CaseIterable, Identifiable, Sendable {
     case activityMonitor
     case strictlyFree
@@ -135,6 +172,7 @@ public final class SettingsStore {
         static let chipsetStyle = "chipsetStyle"
         static let showMenuBarIcon = "showMenuBarIcon"
         static let displayMetric = "displayMetric"
+        static let appTheme = "appTheme"
         static let availabilityMode = "availabilityMode"
         static let refreshIntervalSeconds = "refreshIntervalSeconds"
         static let protectedAppIDs = "protectedAppIDs"
@@ -174,6 +212,13 @@ public final class SettingsStore {
 
     public var displayMetric: DisplayMetric {
         didSet { defaults.set(displayMetric.rawValue, forKey: Keys.displayMetric) }
+    }
+
+    public var appTheme: AppTheme {
+        didSet {
+            defaults.set(appTheme.rawValue, forKey: Keys.appTheme)
+            appTheme.applyToApplication()
+        }
     }
 
     public var availabilityMode: AvailabilityMode {
@@ -322,6 +367,8 @@ public final class SettingsStore {
         let savedShowIcon = defaults.object(forKey: Keys.showMenuBarIcon) as? Bool ?? true
         let savedMetric = defaults.string(forKey: Keys.displayMetric)
             .flatMap(DisplayMetric.init(rawValue:)) ?? .available
+        let savedTheme = defaults.string(forKey: Keys.appTheme)
+            .flatMap(AppTheme.init(rawValue:)) ?? .system
         let savedMode = defaults.string(forKey: Keys.availabilityMode)
             .flatMap(AvailabilityMode.init(rawValue:)) ?? .activityMonitor
         let savedRefresh = defaults.object(forKey: Keys.refreshIntervalSeconds) as? Int ?? 2
@@ -362,6 +409,7 @@ public final class SettingsStore {
         self.chipsetStyle = savedChipStyle
         self.showMenuBarIcon = savedShowIcon
         self.displayMetric = savedMetric
+        self.appTheme = savedTheme
         self.availabilityMode = savedMode
         self.refreshIntervalSeconds = savedRefresh
         self.protectedAppIDs = Set(savedProtected)

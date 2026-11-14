@@ -78,6 +78,7 @@ public struct MemoryPopoverView: View {
         }
         .padding(16)
         .frame(width: 320)
+        .preferredColorScheme(settings.appTheme.colorScheme)
         .onChange(of: selectedTab) { _, newTab in
             if newTab == .apps {
                 monitor.refreshRunningApps()
@@ -470,6 +471,26 @@ public struct MemoryPopoverView: View {
                     Text(settings.availabilityMode.subtitle)
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
+                }
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(L10n.string("settings.theme"))
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.secondary)
+
+                    Picker(
+                        "Theme",
+                        selection: Binding(
+                            get: { settings.appTheme },
+                            set: { settings.appTheme = $0 }
+                        )
+                    ) {
+                        ForEach(AppTheme.allCases) { theme in
+                            Text(theme.title).tag(theme)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.segmented)
                 }
 
                 HStack {

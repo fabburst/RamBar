@@ -26,6 +26,7 @@ struct RamBarApp: App {
             GlobalHotKeyManager.toggleMenuBarPopover()
         }
         NotificationManager.shared.requestAuthorizationIfNeeded()
+        settingsStore.appTheme.applyToApplication()
 
         _settings = State(initialValue: settingsStore)
         _monitor = State(initialValue: memoryMonitor)

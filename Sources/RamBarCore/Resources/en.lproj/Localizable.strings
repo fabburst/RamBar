@@ -36,6 +36,10 @@
 "settings.calc.activity.sub" = "Activity Monitor style (recommended)";
 "settings.calc.strict.sub" = "Unallocated RAM only";
 "settings.refreshInterval" = "Refresh interval";
+"settings.theme" = "Appearance";
+"settings.theme.system" = "Auto";
+"settings.theme.light" = "Light";
+"settings.theme.dark" = "Dark";
 "settings.launchAtLogin" = "Launch at login";
 "settings.dynamicColor" = "Color by RAM load";
 "settings.criticalColor" = "Critical threshold color";
