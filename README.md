@@ -11,6 +11,8 @@ Real-time macOS menu bar RAM monitor for Apple Silicon: <br/> Liquid Glass desig
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-F05138?logo=swift&logoColor=white)](#development)
 [![Swift](https://img.shields.io/badge/Swift-6.2-F05138?logo=swift&logoColor=white)](#development)
 
+**[Download RamBar.zip](https://github.com/fabburst/RamBar/releases/latest/download/RamBar.zip)** · **[Télécharger RamBar.zip](https://github.com/fabburst/RamBar/releases/latest/download/RamBar.zip)**
+
 **[English](#english)** · **[Français](#français)**
 
 **[Features](#features)** · **[Installation](#installation)** · **[Settings & Auto-Close](#settings--auto-close)** · **[Project Structure](#project-structure)** · **[Development](#development)**
@@ -36,7 +38,9 @@ It displays available or used memory directly in your menu bar using native Liqu
 
 ### Installation
 
-Build and install directly into `/Applications`:
+Download **[RamBar.zip](https://github.com/fabburst/RamBar/releases/latest/download/RamBar.zip)** from the [latest release](https://github.com/fabburst/RamBar/releases/latest), unzip it, and move `RamBar.app` to `/Applications` (Apple Silicon, macOS 26+).
+
+Or build from source and install into `/Applications`:
 
 ```sh
 git clone https://github.com/fabburst/RamBar.git
@@ -51,6 +55,10 @@ To sign with your Apple Developer certificate:
 ```sh
 SIGN_IDENTITY="Developer ID Application: Your Name (TEAMID)" ./build-app.sh
 ```
+
+> RamBar is **not notarized by Apple** (no paid developer account), so after a download macOS Gatekeeper may refuse to open it with a plain double-click.
+> - **Right-click (or Control-click) the app → Open → Open**, or *System Settings → Privacy & Security → Open Anyway*. Only once.
+> - Or use **[Sentinel](https://github.com/alienator88/Sentinel)** (free, open source): drag `RamBar.app` onto it to remove the quarantine (`brew install alienator88/homebrew-cask/sentinel-app`).
 
 ### Features
 
@@ -119,7 +127,9 @@ Elle affiche la RAM disponible ou occupée directement dans la barre de menus av
 
 ### Installation
 
-Compiler et installer dans `/Applications` :
+Téléchargez **[RamBar.zip](https://github.com/fabburst/RamBar/releases/latest/download/RamBar.zip)** depuis la [dernière release](https://github.com/fabburst/RamBar/releases/latest), décompressez-le et déplacez `RamBar.app` dans `/Applications` (Apple Silicon, macOS 26+).
+
+Ou compilez depuis les sources et installez dans `/Applications` :
 
 ```sh
 git clone https://github.com/fabburst/RamBar.git
@@ -134,6 +144,10 @@ Pour signer avec votre certificat Apple Developer :
 ```sh
 SIGN_IDENTITY="Developer ID Application: Votre Nom (TEAMID)" ./build-app.sh
 ```
+
+> RamBar n'est **pas notarisée par Apple** (pas de compte développeur payant) : après téléchargement, Gatekeeper peut refuser de l'ouvrir d'un simple double-clic.
+> - **Clic droit (ou Contrôle-clic) sur l'app → Ouvrir → Ouvrir**, ou *Réglages Système → Confidentialité et sécurité → Ouvrir quand même* (une seule fois).
+> - Ou utilisez **[Sentinel](https://github.com/alienator88/Sentinel)** (gratuit, open source) : glissez `RamBar.app` dessus pour retirer la quarantaine (`brew install alienator88/homebrew-cask/sentinel-app`).
 
 ### Fonctionnalités
 
