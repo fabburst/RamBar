@@ -17,6 +17,16 @@ Real-time macOS menu bar RAM monitor for Apple Silicon: <br/> Liquid Glass desig
 
 **[Features](#features)** · **[Installation](#installation)** · **[Settings & Auto-Close](#settings--auto-close)** · **[Project Structure](#project-structure)** · **[Development](#development)**
 
+<br/>
+
+<table>
+<tr>
+<td align="center"><img src="docs/images/screen-memory.png" alt="RamBar Memory view with sparkline and breakdown" width="260" /><br/><sub><b>Memory / Mémoire</b></sub></td>
+<td align="center"><img src="docs/images/screen-apps.png" alt="RamBar Apps view with per-app footprint and pinning" width="260" /><br/><sub><b>Apps</b></sub></td>
+<td align="center"><img src="docs/images/screen-settings.png" alt="RamBar Settings view with chipset icon, thresholds and Auto-Close" width="260" /><br/><sub><b>Settings / Réglages</b></sub></td>
+</tr>
+</table>
+
 </div>
 
 ---

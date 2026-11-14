@@ -1,6 +1,6 @@
 import SwiftUI
 
-private enum PopoverTab: Hashable {
+public enum PopoverTab: Hashable, Sendable {
     case memory
     case apps
     case settings
@@ -10,13 +10,14 @@ public struct MemoryPopoverView: View {
     public let monitor: MemoryMonitor
     public let settings: SettingsStore
 
-    @State private var selectedTab: PopoverTab = .memory
+    @State private var selectedTab: PopoverTab
     @State private var isHoveringQuit = false
     @State private var isHoveringPressure = false
 
-    public init(monitor: MemoryMonitor, settings: SettingsStore) {
+    public init(monitor: MemoryMonitor, settings: SettingsStore, initialTab: PopoverTab = .memory) {
         self.monitor = monitor
         self.settings = settings
+        self._selectedTab = State(initialValue: initialTab)
     }
 
     private var snapshot: MemorySnapshot {
